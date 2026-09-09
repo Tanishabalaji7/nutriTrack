@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriTrack AI — Next-Gen Nutritional Tracker & Calories Intelligence</title>
+    <meta name="description" content="AI-Powered Nutritional Tracker with fresh Google-style login, BMR/TDEE calorie calculator, smart meal diary, and conversational nutritionist bot backed by Java and SQLite.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Ambient Glowing Background Orbs -->
+    <div class="glow-orb glow-1"></div>
+    <div class="glow-orb glow-2"></div>
+    <div class="glow-orb glow-3"></div>
+
+    <!-- Animated Floating Graphical Food Elements in Background -->
+    <!-- Animated Floating Graphical Food & Vegetable Elements in Background -->
+    <div class="floating-food-bg" id="floating-food-container">
+        <!-- 1. Avocado -->
+        <div class="food-element food-avocado" style="top: 6%; left: 5%; animation-delay: 0s;">
+            <svg viewBox="0 0 100 100" width="70" height="70">
+                <path d="M50 10 C30 10, 20 40, 20 65 C20 85, 35 95, 50 95 C65 95, 80 85, 80 65 C80 40, 70 10, 50 10 Z" fill="#2E7D32" />
+                <path d="M50 15 C33 15, 25 42, 25 65 C25 82, 38 90, 50 90 C62 90, 75 82, 75 65 C75 42, 67 15, 50 15 Z" fill="#A5D6A7" />
+                <circle cx="50" cy="65" r="16" fill="#795548" />
+                <circle cx="46" cy="61" r="5" fill="#A1887F" opacity="0.6" />
+            </svg>
+        </div>
+
+        <!-- 2. Crisp Red Apple -->
+        <div class="food-element food-apple" style="top: 18%; left: 14%; animation-delay: -4s;">
+            <svg viewBox="0 0 100 100" width="62" height="62">
+                <path d="M50 30 C40 18, 15 22, 18 55 C20 78, 38 92, 50 92 C62 92, 80 78, 82 55 C85 22, 60 18, 50 30 Z" fill="#E53935" />
+                <path d="M50 30 C48 18, 54 8, 62 4" stroke="#5D4037" stroke-width="4" stroke-linecap="round" fill="none" />
+                <path d="M55 16 C65 10, 75 14, 78 20 C70 24, 60 22, 55 16 Z" fill="#43A047" />
+                <ellipse cx="34" cy="46" rx="6" ry="14" fill="#FF8A80" opacity="0.6" transform="rotate(-20 34 46)" />
+            </svg>
+        </div>
+
+        <!-- 3. Fresh Strawberry -->
+        <div class="food-element food-strawberry" style="top: 12%; right: 7%; animation-delay: -2s;">
+            <svg viewBox="0 0 100 100" width="64" height="64">
+                <path d="M50 20 C25 20, 20 50, 28 75 C34 92, 45 98, 50 98 C55 98, 66 92, 72 75 C80 50, 75 20, 50 20 Z" fill="#E53935" />
+                <path d="M50 10 C45 15, 30 15, 25 25 C40 22, 45 28, 50 25 C55 28, 60 22, 75 25 C70 15, 55 15, 50 10 Z" fill="#43A047" />
+                <circle cx="40" cy="40" r="2.5" fill="#FFF" opacity="0.8"/>
+                <circle cx="60" cy="42" r="2.5" fill="#FFF" opacity="0.8"/>
+                <circle cx="50" cy="55" r="2.5" fill="#FFF" opacity="0.8"/>
+                <circle cx="36" cy="68" r="2.5" fill="#FFF" opacity="0.8"/>
+                <circle cx="62" cy="66" r="2.5" fill="#FFF" opacity="0.8"/>
+                <circle cx="50" cy="78" r="2.5" fill="#FFF" opacity="0.8"/>
+            </svg>
+        </div>
+
+        <!-- 4. Fresh Carrot -->
+        <div class="food-element food-carrot" style="top: 25%; right: 18%; animation-delay: -8s;">
+            <svg viewBox="0 0 100 100" width="66" height="66">
+                <path d="M68 25 C75 18, 60 8, 48 18 L20 80 C18 84, 24 88, 28 84 L72 32 C74 29, 72 26, 68 25 Z" fill="#FF6D00" />
+                <path d="M42 35 L48 38 M35 50 L42 53 M28 65 L34 68" stroke="#E65100" stroke-width="2.5" stroke-linecap="round" />
+                <path d="M60 18 C65 8, 75 6, 80 12 C74 16, 68 18, 60 18 Z" fill="#4CAF50" />
+                <path d="M68 22 C78 18, 88 20, 90 28 C82 28, 74 26, 68 22 Z" fill="#2E7D32" />
+                <path d="M55 14 C58 4, 65 2, 70 8 C66 12, 60 13, 55 14 Z" fill="#81C784" />
+            </svg>
+        </div>
+
+        <!-- 5. Fresh Broccoli Crown -->
+        <div class="food-element food-broccoli" style="bottom: 10%; left: 4%; animation-delay: -6s;">
+            <svg viewBox="0 0 100 100" width="68" height="68">
+                <path d="M44 65 L44 92 C44 95, 56 95, 56 92 L56 65 Z" fill="#81C784" />
+                <circle cx="35" cy="48" r="18" fill="#2E7D32" />
+                <circle cx="65" cy="48" r="18" fill="#2E7D32" />
+                <circle cx="50" cy="32" r="20" fill="#388E3C" />
+                <circle cx="40" cy="38" r="14" fill="#4CAF50" opacity="0.8" />
+                <circle cx="58" cy="38" r="14" fill="#4CAF50" opacity="0.8" />
+            </svg>
+        </div>
+
+        <!-- 6. Sliced Citrus Orange -->
+        <div class="food-element food-orange" style="bottom: 16%; right: 5%; animation-delay: -10s;">
+            <svg viewBox="0 0 100 100" width="68" height="68">
+                <circle cx="50" cy="50" r="42" fill="#FB8C00" />
+                <circle cx="50" cy="50" r="36" fill="#FFE0B2" />
+                <circle cx="50" cy="50" r="32" fill="#FFA726" />
+                <line x1="50" y1="18" x2="50" y2="82" stroke="#FFE0B2" stroke-width="3" />
+                <line x1="18" y1="50" x2="82" y2="50" stroke="#FFE0B2" stroke-width="3" />
+                <line x1="27" y1="27" x2="73" y2="73" stroke="#FFE0B2" stroke-width="3" />
+                <line x1="27" y1="73" x2="73" y2="27" stroke="#FFE0B2" stroke-width="3" />
+            </svg>
+        </div>
+
+        <!-- 7. Banana -->
+        <div class="food-element food-banana" style="top: 36%; right: 12%; animation-delay: -3s;">
+            <svg viewBox="0 0 100 100" width="65" height="65">
+                <path d="M22 75 C30 85, 70 80, 85 45 C92 30, 90 18, 86 16 C82 14, 76 22, 68 34 C52 56, 30 68, 22 75 Z" fill="#FFEB3B" />
+                <path d="M20 74 C16 78, 18 84, 24 82 C32 80, 72 74, 86 42" stroke="#FBC02D" stroke-width="2" fill="none" />
+                <path d="M86 16 L90 12" stroke="#5D4037" stroke-width="4" stroke-linecap="round" />
+                <circle cx="20" cy="76" r="3" fill="#795548" />
+            </svg>
+        </div>
+
+        <!-- 8. Juicy Watermelon Slice -->
+        <div class="food-element food-watermelon" style="top: 52%; left: 10%; animation-delay: -11s;">
+            <svg viewBox="0 0 100 100" width="68" height="68">
+                <path d="M15 35 Q50 95 85 35 Z" fill="#2E7D32" />
+                <path d="M18 35 Q50 90 82 35 Z" fill="#C8E6C9" />
+                <path d="M22 35 Q50 82 78 35 Z" fill="#E53935" />
+                <circle cx="36" cy="46" r="2.5" fill="#212121" />
+                <circle cx="50" cy="56" r="2.5" fill="#212121" />
+                <circle cx="64" cy="46" r="2.5" fill="#212121" />
+                <circle cx="43" cy="65" r="2" fill="#212121" />
+                <circle cx="57" cy="65" r="2" fill="#212121" />
+            </svg>
+        </div>
+
+        <!-- 9. Ripe Tomato -->
+        <div class="food-element food-tomato" style="top: 8%; left: 42%; animation-delay: -5s;">
+            <svg viewBox="0 0 100 100" width="56" height="56">
+                <circle cx="50" cy="55" r="36" fill="#D32F2F" />
+                <ellipse cx="38" cy="46" rx="6" ry="10" fill="#FF5252" opacity="0.6" transform="rotate(-25 38 46)" />
+                <path d="M50 20 L50 10" stroke="#388E3C" stroke-width="4" stroke-linecap="round" />
+                <polygon points="50,22 42,16 46,24 38,26 46,28 42,34 50,28 58,34 54,28 62,26 54,24 58,16" fill="#4CAF50" />
+            </svg>
+        </div>
+
+        <!-- 10. Purple Eggplant / Brinjal -->
+        <div class="food-element food-eggplant" style="bottom: 12%; right: 22%; animation-delay: -7s;">
+            <svg viewBox="0 0 100 100" width="62" height="62">
+                <path d="M50 30 C35 32, 25 50, 25 68 C25 85, 38 95, 55 95 C72 95, 82 82, 78 62 C74 42, 60 30, 50 30 Z" fill="#4A148C" />
+                <ellipse cx="62" cy="65" rx="5" ry="14" fill="#7B1FA2" opacity="0.6" transform="rotate(25 62 65)" />
+                <path d="M50 30 C50 20, 56 12, 60 8" stroke="#2E7D32" stroke-width="4" stroke-linecap="round" fill="none" />
+                <path d="M38 30 C45 35, 55 35, 62 30 C58 38, 54 44, 50 44 C46 44, 42 38, 38 30 Z" fill="#388E3C" />
+            </svg>
+        </div>
+
+        <!-- 11. Zesty Lemon Slice -->
+        <div class="food-element food-lemon" style="top: 48%; right: 4%; animation-delay: -1s;">
+            <svg viewBox="0 0 100 100" width="56" height="56">
+                <circle cx="50" cy="50" r="40" fill="#FDD835" />
+                <circle cx="50" cy="50" r="34" fill="#FFF9C4" />
+                <circle cx="50" cy="50" r="30" fill="#FFEE58" />
+                <line x1="50" y1="20" x2="50" y2="80" stroke="#FFF9C4" stroke-width="3" />
+                <line x1="20" y1="50" x2="80" y2="50" stroke="#FFF9C4" stroke-width="3" />
+                <line x1="29" y1="29" x2="71" y2="71" stroke="#FFF9C4" stroke-width="3" />
+                <line x1="29" y1="71" x2="71" y2="29" stroke="#FFF9C4" stroke-width="3" />
+            </svg>
+        </div>
+
+        <!-- 12. Grapes Cluster -->
+        <div class="food-element food-grapes" style="top: 26%; left: 3%; animation-delay: -9s;">
+            <svg viewBox="0 0 100 100" width="58" height="58">
+                <path d="M50 22 C50 12, 58 6, 62 4" stroke="#5D4037" stroke-width="3.5" stroke-linecap="round" fill="none" />
+                <path d="M52 16 C62 12, 70 18, 72 24 C64 26, 56 22, 52 16 Z" fill="#43A047" />
+                <circle cx="42" cy="32" r="9" fill="#6A1B9A" />
+                <circle cx="58" cy="32" r="9" fill="#7B1FA2" />
+                <circle cx="34" cy="46" r="9" fill="#7B1FA2" />
+                <circle cx="50" cy="46" r="9" fill="#8E24AA" />
+                <circle cx="66" cy="46" r="9" fill="#6A1B9A" />
+                <circle cx="42" cy="60" r="9" fill="#8E24AA" />
+                <circle cx="58" cy="60" r="9" fill="#7B1FA2" />
+                <circle cx="50" cy="74" r="9" fill="#6A1B9A" />
+            </svg>
+        </div>
+
+        <!-- 13. Sweet Bell Pepper / Capsicum -->
+        <div class="food-element food-pepper" style="bottom: 32%; left: 5%; animation-delay: -12s;">
+            <svg viewBox="0 0 100 100" width="60" height="60">
+                <path d="M30 35 C22 45, 22 75, 32 88 C42 92, 58 92, 68 88 C78 75, 78 45, 70 35 C62 28, 38 28, 30 35 Z" fill="#43A047" />
+                <path d="M38 35 C38 48, 42 80, 50 88 M62 35 C62 48, 58 80, 50 88" stroke="#2E7D32" stroke-width="2.5" fill="none" />
+                <path d="M50 30 C50 18, 56 12, 60 10" stroke="#1B5E20" stroke-width="4" stroke-linecap="round" fill="none" />
+            </svg>
+        </div>
+
+        <!-- 14. Golden Pineapple -->
+        <div class="food-element food-pineapple" style="top: 78%; left: 24%; animation-delay: -3s;">
+            <svg viewBox="0 0 100 100" width="62" height="62">
+                <path d="M50 35 L40 10 L48 25 L50 6 L52 25 L60 10 Z" fill="#2E7D32" />
+                <path d="M46 32 L32 18 L44 28 L50 14 L56 28 L68 18 L54 32 Z" fill="#43A047" />
+                <ellipse cx="50" cy="62" rx="24" ry="30" fill="#FBC02D" />
+                <path d="M32 45 L68 78 M26 58 L64 88 M44 38 L74 65 M68 45 L32 78 M74 58 L36 88 M56 38 L26 65" stroke="#F57F17" stroke-width="2" />
+            </svg>
+        </div>
+
+        <!-- 15. Kiwi Slice -->
+        <div class="food-element food-kiwi" style="top: 66%; right: 14%; animation-delay: -6s;">
+            <svg viewBox="0 0 100 100" width="55" height="55">
+                <circle cx="50" cy="50" r="38" fill="#8D6E63" />
+                <circle cx="50" cy="50" r="34" fill="#7CB342" />
+                <ellipse cx="50" cy="50" rx="10" ry="14" fill="#DCEDC8" />
+                <circle cx="42" cy="40" r="1.5" fill="#212121" />
+                <circle cx="58" cy="40" r="1.5" fill="#212121" />
+                <circle cx="38" cy="50" r="1.5" fill="#212121" />
+                <circle cx="62" cy="50" r="1.5" fill="#212121" />
+                <circle cx="42" cy="60" r="1.5" fill="#212121" />
+                <circle cx="58" cy="60" r="1.5" fill="#212121" />
+                <circle cx="50" cy="36" r="1.5" fill="#212121" />
+                <circle cx="50" cy="64" r="1.5" fill="#212121" />
+            </svg>
+        </div>
+
+        <!-- 16. Juicy Peach -->
+        <div class="food-element food-peach" style="top: 60%; right: 25%; animation-delay: -13s;">
+            <svg viewBox="0 0 100 100" width="56" height="56">
+                <path d="M50 32 C35 20, 18 38, 22 62 C26 84, 45 92, 50 92 C55 92, 74 84, 78 62 C82 38, 65 20, 50 32 Z" fill="#FF8A65" />
+                <path d="M50 32 C50 55, 48 85, 50 92" stroke="#FF7043" stroke-width="2.5" fill="none" opacity="0.6" />
+                <path d="M50 30 C50 18, 56 12, 62 8" stroke="#5D4037" stroke-width="3" stroke-linecap="round" fill="none" />
+                <path d="M56 18 C66 14, 74 18, 76 24 C68 26, 60 22, 56 18 Z" fill="#66BB6A" />
+            </svg>
+        </div>
+
+        <!-- 17. Fresh Mushroom -->
+        <div class="food-element food-mushroom" style="bottom: 6%; left: 42%; animation-delay: -8s;">
+            <svg viewBox="0 0 100 100" width="52" height="52">
+                <path d="M42 55 L38 88 C38 92, 62 92, 62 88 L58 55 Z" fill="#E0E0E0" />
+                <path d="M15 58 C15 30, 40 18, 50 18 C60 18, 85 30, 85 58 C85 62, 15 62, 15 58 Z" fill="#8D6E63" />
+                <circle cx="34" cy="38" r="5" fill="#D7CCC8" opacity="0.8" />
+                <circle cx="52" cy="32" r="6" fill="#D7CCC8" opacity="0.8" />
+                <circle cx="68" cy="42" r="4" fill="#D7CCC8" opacity="0.8" />
+            </svg>
+        </div>
+
+        <!-- 18. Beetroot / Radish -->
+        <div class="food-element food-beetroot" style="top: 82%; right: 7%; animation-delay: -5s;">
+            <svg viewBox="0 0 100 100" width="56" height="56">
+                <path d="M50 35 C28 35, 20 60, 35 78 L50 94 L65 78 C80 60, 72 35, 50 35 Z" fill="#880E4F" />
+                <path d="M50 35 C42 18, 30 14, 25 8 C34 14, 44 24, 50 35 Z" fill="#2E7D32" />
+                <path d="M50 35 C50 16, 56 8, 62 4 C60 14, 56 25, 50 35 Z" fill="#43A047" />
+                <path d="M50 35 C58 20, 68 16, 75 12 C68 18, 58 26, 50 35 Z" fill="#388E3C" />
+            </svg>
+        </div>
+
+        <!-- 19. Spinach Leaf -->
+        <div class="food-element food-leaf" style="bottom: 42%; left: 7%; animation-delay: -11s;">
+            <svg viewBox="0 0 100 100" width="48" height="48">
+                <path d="M20 80 Q20 20 80 20 Q80 80 20 80 Z" fill="#66BB6A"/>
+                <line x1="20" y1="80" x2="80" y2="20" stroke="#388E3C" stroke-width="3"/>
+            </svg>
+        </div>
+
+        <!-- 20. Wild Blueberries -->
+        <div class="food-element food-blueberry" style="top: 72%; right: 18%; animation-delay: -2s;">
+            <svg viewBox="0 0 100 100" width="48" height="48">
+                <circle cx="50" cy="50" r="35" fill="#3949AB"/>
+                <circle cx="40" cy="40" r="10" fill="#5C6BC0" opacity="0.5"/>
+                <polygon points="50,22 55,30 63,28 58,35 63,42 55,40 50,48 45,40 37,42 42,35 37,28 45,30" fill="#1A237E"/>
+            </svg>
+        </div>
+
+        <!-- 21. Fresh Hydration Droplet -->
+        <div class="food-element food-water" style="top: 38%; right: 3%; animation-delay: -7s;">
+            <svg viewBox="0 0 100 100" width="52" height="52">
+                <path d="M50 15 C50 15, 20 52, 20 68 C20 84, 33 95, 50 95 C67 95, 80 84, 80 68 C80 52, 50 15, 50 15 Z" fill="#00E5FF" opacity="0.85"/>
+                <path d="M42 45 C42 45, 30 62, 30 72 C30 80, 36 85, 42 85" stroke="#FFF" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6"/>
+            </svg>
+        </div>
+
+        <!-- 22. Atlantic Salmon Cutlet -->
+        <div class="food-element food-salmon" style="top: 42%; left: 2%; animation-delay: -4s;">
+            <svg viewBox="0 0 100 100" width="58" height="58">
+                <ellipse cx="50" cy="50" rx="42" ry="24" fill="#FF7043" />
+                <path d="M25 40 Q50 55 75 40" stroke="#FFAB91" stroke-width="3" fill="none"/>
+                <path d="M22 50 Q50 65 78 50" stroke="#FFAB91" stroke-width="3" fill="none"/>
+                <path d="M28 60 Q50 75 72 60" stroke="#FFAB91" stroke-width="3" fill="none"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Google-Styled Modern Glassmorphism Login & Onboarding Portal Overlay -->
+    <div class="auth-overlay" id="auth-portal-overlay">
+        <div class="auth-card glass-card">
+            <!-- Brand header -->
+            <div class="auth-brand-header">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h2>NutriTrack <span class="badge-ai">AI</span></h2>
+                    <span class="brand-subtitle">Clinical Nutrition & Calorie Intelligence</span>
+                </div>
+            </div>
+
+            <!-- Google 1-Click Fast Access Button -->
+            <div class="google-auth-box">
+                <button class="btn btn-google btn-block" id="btn-google-signin">
+                    <svg class="google-icon" viewBox="0 0 24 24">
+                        <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.3 9 5 12 5z"/>
+                        <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.6h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.9z"/>
+                        <path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.9 7.3C.7 9.7 0 12.3 0 15.2s.7 5.5 1.9 7.9l3.7-2.9c-.2-.7-.4-1.5-.4-2.4z"/>
+                        <path fill="#34A853" d="M12 23.5c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.3-6.4-5.2L1.9 16.5C3.7 20.2 7.5 23.5 12 23.5z"/>
+                    </svg>
+                    <span>Continue with Google</span>
+                </button>
+            </div>
+
+            <div class="auth-divider">
+                <span>or enter account details</span>
+            </div>
+
+            <!-- Auth Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab-btn active" data-auth-tab="login">Sign In</button>
+                <button class="auth-tab-btn" data-auth-tab="signup">Create Fresh Account</button>
+            </div>
+
+            <!-- Tab 1: Existing Sign In -->
+            <div class="auth-tab-pane active" id="auth-tab-login">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="login-email" class="form-control" value="alex@example.com" placeholder="name@example.com" required>
+                    </div>
+                    <div class="form-group" style="margin-top: 12px;">
+                        <label>Password</label>
+                        <input type="password" id="login-password" class="form-control" value="password123" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="auth-error-msg" id="login-error-msg"></div>
+
+                    <button type="submit" class="btn btn-primary btn-block" style="margin-top: 20px;">
+                        <span>Sign In to Dashboard →</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Tab 2: Fresh Account Registration & Biometric Setup -->
+            <div class="auth-tab-pane" id="auth-tab-signup">
+                <form id="signup-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="signup-name" class="form-control" placeholder="e.g. Jordan Lee" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="signup-email" class="form-control" placeholder="jordan@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="signup-password" class="form-control" placeholder="••••••••" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Age (Years)</label>
+                            <input type="number" id="signup-age" class="form-control" value="28" min="1" max="120" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Biological Gender</label>
+                            <select id="signup-gender" class="form-control">
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Height (cm)</label>
+                            <input type="number" id="signup-height" class="form-control" value="170" step="0.5" min="50" max="250" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Weight (kg)</label>
+                            <input type="number" id="signup-weight" class="form-control" value="65" step="0.1" min="10" max="300" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Primary Dietary Goal</label>
+                            <select id="signup-goal" class="form-control">
+                                <option value="weight_loss">Weight Loss (Caloric Deficit -20%)</option>
+                                <option value="maintain" selected>Maintain Weight (TDEE Equilibrium)</option>
+                                <option value="muscle_gain">Muscle Gain / Hypertrophy (+380 kcal)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Activity Multiplier</label>
+                            <select id="signup-activity" class="form-control">
+                                <option value="sedentary">Sedentary (Desk Job - 1.2x)</option>
+                                <option value="light">Lightly Active (1-3 days/wk - 1.375x)</option>
+                                <option value="moderate" selected>Moderately Active (3-5 days/wk - 1.55x)</option>
+                                <option value="active">Active (6-7 days/wk - 1.725x)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="auth-error-msg" id="signup-error-msg"></div>
+
+                    <button type="submit" class="btn btn-primary btn-block" style="margin-top: 18px;">
+                        <span>Create Account & Calculate Calories →</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application Shell -->
+    <div class="app-layout" id="main-app-layout" style="display: none;">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand-container">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h2>NutriTrack <span class="badge-ai">AI</span></h2>
+                    <span class="brand-subtitle">Java & SQLite Core</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <button class="nav-item active" data-tab="dashboard" id="nav-dashboard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item" data-tab="food-diary" id="nav-food-diary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    <span>Meal Diary</span>
+                </button>
+                <button class="nav-item" data-tab="analytics" id="nav-analytics">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    <span>Weekly Trends</span>
+                </button>
+                <button class="nav-item" data-tab="chatbot" id="nav-chatbot">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    <span>NutriBot AI</span>
+                    <span class="tab-pill">Live</span>
+                </button>
+                <button class="nav-item" data-tab="profile-settings" id="nav-profile-settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <span>Profile & Goals</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-chip" id="sidebar-user-chip">
+                    <div class="user-avatar" id="avatar-initials">AM</div>
+                    <div class="user-info">
+                        <h4 id="sidebar-user-name">Alex Morgan</h4>
+                        <span id="sidebar-user-meta">Age 28 • Maintain</span>
+                    </div>
+                </div>
+                <button class="btn btn-outline btn-sm btn-block" id="btn-logout" style="margin-top: 10px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    <span>Switch Account / Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header Bar -->
+            <header class="top-header">
+                <div class="date-navigator" id="date-navigator-container">
+                    <button class="icon-btn" id="btn-prev-day" title="Previous Day">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <div class="current-date-display" id="date-display-trigger" title="Click to open interactive calendar">
+                        <div class="mini-calendar-badge" id="mini-calendar-badge">
+                            <span class="mini-cal-month" id="mini-cal-month">SEP</span>
+                            <span class="mini-cal-day" id="mini-cal-day">04</span>
+                        </div>
+                        <span id="formatted-date-label">Today, Sep 4</span>
+                        <svg class="dropdown-chevron" id="date-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <button class="icon-btn" id="btn-next-day" title="Next Day">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+
+                    <!-- Interactive Calendar Popover (#FFBFA9 Theme) -->
+                    <div class="calendar-popover" id="calendar-popover" aria-hidden="true">
+                        <div class="cal-header">
+                            <button type="button" class="cal-nav-btn" id="cal-prev-month" title="Previous Month">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                            </button>
+                            <div class="cal-title-wrap">
+                                <span class="cal-month-name" id="cal-current-month-label">September</span>
+                                <span class="cal-year-name" id="cal-current-year-label">2026</span>
+                            </div>
+                            <button type="button" class="cal-nav-btn" id="cal-next-month" title="Next Month">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+
+                        <!-- 12-Month Quick Selector Bar -->
+                        <div class="cal-months-strip" id="cal-months-strip">
+                            <!-- Populated by JS: Jan, Feb, Mar, etc. -->
+                        </div>
+
+                        <!-- Weekdays Row -->
+                        <div class="cal-weekdays-row">
+                            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                        </div>
+
+                        <!-- Days of Month Grid -->
+                        <div class="cal-days-grid" id="cal-days-grid">
+                            <!-- Populated dynamically by JS -->
+                        </div>
+
+                        <!-- Calendar Footer Quick Actions -->
+                        <div class="cal-footer">
+                            <button type="button" class="cal-quick-btn" id="cal-btn-yesterday">Yesterday</button>
+                            <button type="button" class="cal-quick-btn active-today" id="cal-btn-today">Today</button>
+                            <button type="button" class="cal-quick-btn" id="cal-btn-tomorrow">Tomorrow</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <div class="streak-badge">
+                        <span class="streak-icon">🔥</span>
+                        <span class="streak-text"><strong>5 Day</strong> Streak</span>
+                    </div>
+                    <button class="btn btn-secondary" id="btn-quick-water">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                        <span>+250ml Water</span>
+                    </button>
+                    <button class="btn btn-primary" id="btn-open-log-modal">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        <span>Log Food</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Tab Content 1: Dashboard -->
+            <section class="tab-pane active" id="tab-dashboard">
+                <!-- Hero Calorie & Macro Visualizer Grid -->
+                <div class="dashboard-hero-grid">
+                    <!-- Calorie Radial Gauge Card -->
+                    <div class="glass-card calorie-gauge-card">
+                        <div class="card-header">
+                            <div>
+                                <span class="card-eyebrow">Daily Energy Balance</span>
+                                <h3>Calories Remaining</h3>
+                            </div>
+                            <div class="score-pill" id="dashboard-score-pill" title="Nutrition Quality Score">
+                                <span class="score-label">Score</span>
+                                <span class="score-val" id="hero-score-val">--</span>
+                            </div>
+                        </div>
+
+                        <div class="gauge-center-wrapper">
+                            <div class="circular-progress-container">
+                                <svg class="progress-ring" width="220" height="220">
+                                    <circle class="progress-ring-bg" stroke="rgba(255,255,255,0.06)" stroke-width="14" fill="transparent" r="92" cx="110" cy="110"/>
+                                    <circle class="progress-ring-circle" id="calorie-progress-circle" stroke="url(#calorie-gradient)" stroke-width="14" stroke-dasharray="578" stroke-dashoffset="578" stroke-linecap="round" fill="transparent" r="92" cx="110" cy="110"/>
+                                    <defs>
+                                        <linearGradient id="calorie-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#B95E82" />
+                                            <stop offset="100%" stop-color="#F39F9F" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <div class="gauge-stats">
+                                    <span class="gauge-number" id="calories-remaining-val">0</span>
+                                    <span class="gauge-unit">kcal left</span>
+                                    <div class="gauge-target-sub" id="calories-target-sub">Target: 2,150 kcal</div>
+                                </div>
+                            </div>
+
+                            <div class="calorie-split-stats">
+                                <div class="split-stat">
+                                    <div class="stat-indicator eaten-dot"></div>
+                                    <div>
+                                        <span class="split-label">Eaten</span>
+                                        <h4 id="stat-eaten-cal">0 kcal</h4>
+                                    </div>
+                                </div>
+                                <div class="split-stat">
+                                    <div class="stat-indicator target-dot"></div>
+                                    <div>
+                                        <span class="split-label">Target (TDEE)</span>
+                                        <h4 id="stat-target-cal">0 kcal</h4>
+                                    </div>
+                                </div>
+                                <div class="split-stat">
+                                    <div class="stat-indicator bmr-dot"></div>
+                                    <div>
+                                        <span class="split-label">Basal (BMR)</span>
+                                        <h4 id="stat-bmr-cal">0 kcal</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Macro Target Progress Rings -->
+                    <div class="glass-card macros-summary-card">
+                        <div class="card-header">
+                            <div>
+                                <span class="card-eyebrow">Macronutrient Split</span>
+                                <h3>Target vs Intake</h3>
+                            </div>
+                            <span class="badge-sub" id="macro-goal-badge">Maintenance</span>
+                        </div>
+
+                        <div class="macro-bars-list">
+                            <!-- Protein -->
+                            <div class="macro-bar-item protein-item">
+                                <div class="macro-bar-header">
+                                    <div class="macro-title">
+                                        <span class="macro-dot dot-protein"></span>
+                                        <strong>Protein</strong>
+                                        <span class="macro-ratio" id="protein-ratio-text">(4 kcal/g)</span>
+                                    </div>
+                                    <div class="macro-nums">
+                                        <span class="macro-eaten" id="protein-eaten-val">0g</span> / <span class="macro-target" id="protein-target-val">120g</span>
+                                    </div>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill fill-protein" id="protein-progress-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Carbs -->
+                            <div class="macro-bar-item carbs-item">
+                                <div class="macro-bar-header">
+                                    <div class="macro-title">
+                                        <span class="macro-dot dot-carbs"></span>
+                                        <strong>Carbohydrates</strong>
+                                        <span class="macro-ratio" id="carbs-ratio-text">(4 kcal/g)</span>
+                                    </div>
+                                    <div class="macro-nums">
+                                        <span class="macro-eaten" id="carbs-eaten-val">0g</span> / <span class="macro-target" id="carbs-target-val">240g</span>
+                                    </div>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill fill-carbs" id="carbs-progress-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Fats -->
+                            <div class="macro-bar-item fats-item">
+                                <div class="macro-bar-header">
+                                    <div class="macro-title">
+                                        <span class="macro-dot dot-fats"></span>
+                                        <strong>Healthy Fats</strong>
+                                        <span class="macro-ratio" id="fats-ratio-text">(9 kcal/g)</span>
+                                    </div>
+                                    <div class="macro-nums">
+                                        <span class="macro-eaten" id="fats-eaten-val">0g</span> / <span class="macro-target" id="fats-target-val">65g</span>
+                                    </div>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill fill-fats" id="fats-progress-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mini Hydration & Fiber Bar -->
+                        <div class="mini-metrics-row">
+                            <div class="mini-metric-pill">
+                                <span class="mini-icon">💧</span>
+                                <div>
+                                    <span class="mini-label">Water</span>
+                                    <strong id="mini-water-val">0 / 2500 ml</strong>
+                                </div>
+                            </div>
+                            <div class="mini-metric-pill">
+                                <span class="mini-icon">🌾</span>
+                                <div>
+                                    <span class="mini-label">Fiber</span>
+                                    <strong id="mini-fiber-val">0 / 30g</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meal Diary Preview Section -->
+                <div class="section-header-row">
+                    <div>
+                        <h3>Today's Meals & Diary</h3>
+                        <p class="section-sub">Log meals to track real-time calories, macros, and hydration.</p>
+                    </div>
+                    <button class="btn btn-outline" id="btn-open-log-modal-2">+ Add Food</button>
+                </div>
+
+                <div class="meal-categories-grid">
+                    <!-- Breakfast Card -->
+                    <div class="glass-card meal-bucket-card" data-meal="breakfast">
+                        <div class="meal-bucket-header">
+                            <div class="meal-title-group">
+                                <span class="meal-emoji">🌅</span>
+                                <div>
+                                    <h4>Breakfast</h4>
+                                    <span class="meal-cal-tag" id="cal-tag-breakfast">0 kcal</span>
+                                </div>
+                            </div>
+                            <button class="icon-add-btn" data-add-meal="breakfast" title="Add to Breakfast">+</button>
+                        </div>
+                        <div class="meal-items-list" id="meal-list-breakfast">
+                            <div class="empty-meal-placeholder">No items logged yet.</div>
+                        </div>
+                    </div>
+
+                    <!-- Lunch Card -->
+                    <div class="glass-card meal-bucket-card" data-meal="lunch">
+                        <div class="meal-bucket-header">
+                            <div class="meal-title-group">
+                                <span class="meal-emoji">☀️</span>
+                                <div>
+                                    <h4>Lunch</h4>
+                                    <span class="meal-cal-tag" id="cal-tag-lunch">0 kcal</span>
+                                </div>
+                            </div>
+                            <button class="icon-add-btn" data-add-meal="lunch" title="Add to Lunch">+</button>
+                        </div>
+                        <div class="meal-items-list" id="meal-list-lunch">
+                            <div class="empty-meal-placeholder">No items logged yet.</div>
+                        </div>
+                    </div>
+
+                    <!-- Dinner Card -->
+                    <div class="glass-card meal-bucket-card" data-meal="dinner">
+                        <div class="meal-bucket-header">
+                            <div class="meal-title-group">
+                                <span class="meal-emoji">🌙</span>
+                                <div>
+                                    <h4>Dinner</h4>
+                                    <span class="meal-cal-tag" id="cal-tag-dinner">0 kcal</span>
+                                </div>
+                            </div>
+                            <button class="icon-add-btn" data-add-meal="dinner" title="Add to Dinner">+</button>
+                        </div>
+                        <div class="meal-items-list" id="meal-list-dinner">
+                            <div class="empty-meal-placeholder">No items logged yet.</div>
+                        </div>
+                    </div>
+
+                    <!-- Snacks Card -->
+                    <div class="glass-card meal-bucket-card" data-meal="snack">
+                        <div class="meal-bucket-header">
+                            <div class="meal-title-group">
+                                <span class="meal-emoji">🍎</span>
+                                <div>
+                                    <h4>Snacks</h4>
+                                    <span class="meal-cal-tag" id="cal-tag-snack">0 kcal</span>
+                                </div>
+                            </div>
+                            <button class="icon-add-btn" data-add-meal="snack" title="Add to Snacks">+</button>
+                        </div>
+                        <div class="meal-items-list" id="meal-list-snack">
+                            <div class="empty-meal-placeholder">No items logged yet.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab Content 2: Meal Diary (Full View) -->
+            <section class="tab-pane" id="tab-food-diary">
+                <div class="page-title-banner">
+                    <div>
+                        <span class="card-eyebrow">Log History & Breakdown</span>
+                        <h2>Interactive Daily Food Diary</h2>
+                        <p class="section-sub">Inspect individual logged foods, macro contributions, and timestamp history.</p>
+                    </div>
+                    <button class="btn btn-primary" id="btn-open-log-modal-3">+ Log Food Item</button>
+                </div>
+
+                <div class="full-diary-wrapper" id="full-diary-container">
+                    <!-- Dynamic rendering of meals with full nutrient breakdown -->
+                </div>
+            </section>
+
+            <!-- Tab Content 3: Weekly Trends & Analytics -->
+            <section class="tab-pane" id="tab-analytics">
+                <div class="page-title-banner">
+                    <div>
+                        <span class="card-eyebrow">7-Day Trajectory</span>
+                        <h2>Weekly Calorie & Macro Analytics</h2>
+                        <p class="section-sub">Understand your consistency, average caloric deficit/surplus, and macro adherence.</p>
+                    </div>
+                </div>
+
+                <div class="analytics-grid">
+                    <!-- Calorie Chart Card -->
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <div>
+                                <span class="card-eyebrow">Consistency</span>
+                                <h3>7-Day Calorie Intake vs Target</h3>
+                            </div>
+                        </div>
+                        <div class="chart-container" id="weekly-calorie-chart">
+                            <!-- SVG Chart rendered by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Macro Split Trend Card -->
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <div>
+                                <span class="card-eyebrow">Macro Distribution</span>
+                                <h3>Protein, Carbs & Fat Adherence</h3>
+                            </div>
+                        </div>
+                        <div class="chart-container" id="weekly-macro-chart">
+                            <!-- SVG Chart rendered by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab Content 4: NutriBot AI Chatbot Full Tab -->
+            <section class="tab-pane" id="tab-chatbot">
+                <div class="page-title-banner">
+                    <div>
+                        <span class="card-eyebrow">Intelligent Nutrition Coach</span>
+                        <h2>NutriBot AI Assistant <span class="gemini-live-pill" id="chat-gemini-live-pill"><span class="pulse-dot"></span> Powered by Gemini AI</span></h2>
+                        <p class="section-sub">Ask any nutrition, meal, recipe, or fitness question across global & Indian cuisines, compute deficits, or log meals via natural language.</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                        <button class="btn btn-outline btn-sm" id="btn-clear-chat">Clear History</button>
+                    </div>
+                </div>
+
+                <div class="chat-full-container glass-card">
+                    <div class="chat-messages-scroll" id="full-chat-messages">
+                        <!-- Chat messages injected dynamically -->
+                    </div>
+
+                    <div class="chat-prompt-chips" id="full-chat-chips">
+                        <button class="chip-btn" data-prompt="Suggest a high protein vegetarian Indian dinner">🇮🇳 High-protein Indian dinner</button>
+                        <button class="chip-btn" data-prompt="How many calories do I have left today?">🔥 Calorie & deficit status</button>
+                        <button class="chip-btn" data-prompt="Log 2 rotis and palak paneer for lunch">🍛 Log 2 rotis & palak paneer</button>
+                        <button class="chip-btn" data-prompt="What are the best healthy breakfast ideas under 400 calories?">🍳 Breakfast under 400 kcal</button>
+                        <button class="chip-btn" data-prompt="Log 500ml water">💧 Log 500ml water</button>
+                        <button class="chip-btn" data-prompt="Explain the benefits of millets like Ragi and Bajra for metabolism">🌾 Ragi & Bajra benefits</button>
+                    </div>
+
+                    <form class="chat-input-row" id="full-chat-form">
+                        <input type="text" id="full-chat-input" placeholder="Ask anything or describe what you ate (e.g. 'I had 2 rotis and dal tadka for lunch')..." autocomplete="off">
+                        <button type="submit" class="btn btn-primary" id="btn-send-full-chat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Tab Content 5: Profile & Goals Settings -->
+            <section class="tab-pane" id="tab-profile-settings">
+                <div class="page-title-banner">
+                    <div>
+                        <span class="card-eyebrow">Anthropometrics & Energy Equations</span>
+                        <h2>Profile, Goals & Basal Metabolic Rate</h2>
+                        <p class="section-sub">Configure your biometrics. BMR (Mifflin-St Jeor) and TDEE calorie targets are computed dynamically.</p>
+                    </div>
+                </div>
+
+                <div class="profile-settings-grid">
+                    <div class="glass-card">
+                        <form id="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" id="input-profile-name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Age (Years)</label>
+                                    <input type="number" id="input-profile-age" class="form-control" min="1" max="120" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Biological Gender</label>
+                                    <select id="input-profile-gender" class="form-control">
+                                        <option value="female">Female</option>
+                                        <option value="male">Male</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Height (cm)</label>
+                                    <input type="number" id="input-profile-height" class="form-control" step="0.5" min="50" max="250" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Weight (kg)</label>
+                                    <input type="number" id="input-profile-weight" class="form-control" step="0.1" min="10" max="300" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Activity Multiplier</label>
+                                    <select id="input-profile-activity" class="form-control">
+                                        <option value="sedentary">Sedentary (desk job, little exercise - 1.2x)</option>
+                                        <option value="light">Lightly Active (1-3 days/week - 1.375x)</option>
+                                        <option value="moderate">Moderately Active (3-5 days/week - 1.55x)</option>
+                                        <option value="active">Active (6-7 days/week - 1.725x)</option>
+                                        <option value="very_active">Very Active (athlete/physical labor - 1.9x)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Primary Goal</label>
+                                    <select id="input-profile-goal" class="form-control">
+                                        <option value="weight_loss">Weight Loss (Caloric Deficit -20%)</option>
+                                        <option value="maintain">Maintain Weight (TDEE Equilibrium)</option>
+                                        <option value="muscle_gain">Muscle Gain / Hypertrophy (+380 kcal)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Dietary Style</label>
+                                    <select id="input-profile-diet" class="form-control">
+                                        <option value="omnivore">Balanced Omnivore</option>
+                                        <option value="vegetarian">Vegetarian</option>
+                                        <option value="vegan">100% Plant-Based (Vegan)</option>
+                                        <option value="keto">Ketogenic (Low Carb / High Fat)</option>
+                                        <option value="pescatarian">Pescatarian</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Daily Water Goal (Liters)</label>
+                                    <input type="number" id="input-profile-water" class="form-control" step="0.1" min="1" max="10">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Custom Calorie Override (Optional, 0 = Auto BMR/TDEE)</label>
+                                    <input type="number" id="input-profile-custom-cal" class="form-control" min="0" max="10000" placeholder="0">
+                                </div>
+                            </div>
+
+                            <div class="form-actions" style="margin-top: 20px;">
+                                <button type="submit" class="btn btn-primary" id="btn-save-profile">Save & Recalculate BMR / Macros</button>
+                                <span class="save-status-msg" id="profile-save-status"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Floating NutriBot AI Chat Widget (Available on any screen) -->
+    <div class="floating-chat-widget" id="floating-chat-container">
+        <button class="chat-toggle-btn" id="btn-toggle-floating-chat" title="Chat with NutriBot AI">
+            <svg class="chat-open-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <svg class="chat-close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <span class="chat-glow-dot"></span>
+        </button>
+
+        <div class="floating-chat-window glass-card" id="floating-chat-window">
+            <div class="floating-chat-header">
+                <div class="chat-header-info">
+                    <div class="bot-avatar">🤖</div>
+                    <div>
+                        <h4>NutriBot <span class="badge-ai">AI</span></h4>
+                        <span class="bot-status">Online • Java & SQLite</span>
+                    </div>
+                </div>
+                <button class="icon-btn-sm" id="btn-minimize-chat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <div class="floating-chat-messages" id="floating-chat-messages">
+                <!-- Messages -->
+            </div>
+
+            <div class="chat-prompt-chips small-chips" id="floating-chat-chips">
+                <button class="chip-btn" data-prompt="How many calories left?">🔥 Calories left</button>
+                <button class="chip-btn" data-prompt="Log 250ml water">💧 +250ml water</button>
+                <button class="chip-btn" data-prompt="Suggest high protein dinner">🥗 Dinner recipe</button>
+            </div>
+
+            <form class="floating-chat-input-form" id="floating-chat-form">
+                <input type="text" id="floating-chat-input" placeholder="Ask or log food (e.g. '2 eggs for breakfast')..." autocomplete="off">
+                <button type="submit" class="btn btn-primary btn-sm">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Food Logger Modal -->
+    <div class="modal-overlay" id="food-log-modal">
+        <div class="modal-card glass-card">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <span class="modal-icon">🥗</span>
+                    <div>
+                        <h3>Log Food Item</h3>
+                        <span class="section-sub">Search verified database or create custom food</span>
+                    </div>
+                </div>
+                <button class="icon-btn" id="btn-close-log-modal">&times;</button>
+            </div>
+
+            <div class="modal-tabs">
+                <button class="modal-tab-btn active" data-modal-tab="search-foods">Database Search</button>
+                <button class="modal-tab-btn" data-modal-tab="custom-food">Create Custom Food</button>
+            </div>
+
+            <!-- Modal Tab 1: Database Search -->
+            <div class="modal-tab-pane active" id="modal-tab-search-foods">
+                <div class="search-bar-row">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="food-search-input" placeholder="Search by name (e.g. Salmon, Chicken, Oats, Avocado, Dal)...">
+                </div>
+
+                <!-- Category filter chips -->
+                <div class="category-filter-chips" id="food-category-chips">
+                    <button class="cat-chip active" data-cat="All">All</button>
+                    <button class="cat-chip" data-cat="Proteins">Proteins</button>
+                    <button class="cat-chip" data-cat="Grains">Grains</button>
+                    <button class="cat-chip" data-cat="Vegetables">Vegetables</button>
+                    <button class="cat-chip" data-cat="Fruits">Fruits</button>
+                    <button class="cat-chip" data-cat="Dairy">Dairy</button>
+                    <button class="cat-chip" data-cat="Healthy Fats">Healthy Fats</button>
+                    <button class="cat-chip" data-cat="Prepared Meals">Meals</button>
+                    <button class="cat-chip" data-cat="Snacks">Snacks</button>
+                    <button class="cat-chip" data-cat="Beverages">Beverages</button>
+                </div>
+
+                <!-- Food Results List -->
+                <div class="food-results-scroll" id="food-results-list">
+                    <!-- Food items injected dynamically -->
+                </div>
+
+                <!-- Selected Food Portion Configurator (shows when item selected) -->
+                <div class="selected-food-portion-box hidden" id="selected-portion-box">
+                    <div class="portion-header">
+                        <div>
+                            <strong id="selected-food-name">Grilled Chicken Breast</strong>
+                            <span class="portion-base-unit" id="selected-food-unit-info">Base: 100g = 165 kcal, 31g P, 0g C, 3.6g F</span>
+                        </div>
+                        <button class="link-btn" id="btn-cancel-selection">Cancel</button>
+                    </div>
+
+                    <div class="portion-inputs-grid">
+                        <div class="form-group">
+                            <label>Target Meal</label>
+                            <select id="select-log-meal-type" class="form-control">
+                                <option value="breakfast">Breakfast</option>
+                                <option value="lunch" selected>Lunch</option>
+                                <option value="dinner">Dinner</option>
+                                <option value="snack">Snack</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Portion Multiplier (e.g. 1.5x)</label>
+                            <div class="stepper-input">
+                                <button class="step-btn" id="btn-qty-minus">-</button>
+                                <input type="number" id="input-log-quantity" value="1.0" step="0.25" min="0.25" max="10.0" class="form-control">
+                                <button class="step-btn" id="btn-qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="live-computed-macros" id="live-macro-preview">
+                        <span>🔥 <strong id="prev-cal">165</strong> kcal</span>
+                        <span>🥩 <strong id="prev-prot">31</strong>g Protein</span>
+                        <span>🍞 <strong id="prev-carbs">0</strong>g Carbs</span>
+                        <span>🥑 <strong id="prev-fat">3.6</strong>g Fat</span>
+                    </div>
+
+                    <button class="btn btn-primary btn-block" id="btn-confirm-log-meal">Add to Meal Diary</button>
+                </div>
+            </div>
+
+            <!-- Modal Tab 2: Create Custom Food -->
+            <div class="modal-tab-pane" id="modal-tab-custom-food">
+                <form id="custom-food-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Food Item Name</label>
+                            <input type="text" id="cust-name" class="form-control" placeholder="e.g. Homemade Protein Pancake" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="cust-category" class="form-control">
+                                <option value="Proteins">Proteins</option>
+                                <option value="Grains">Grains</option>
+                                <option value="Vegetables">Vegetables</option>
+                                <option value="Fruits">Fruits</option>
+                                <option value="Dairy">Dairy & Alternatives</option>
+                                <option value="Healthy Fats">Healthy Fats & Nuts</option>
+                                <option value="Prepared Meals">Prepared Meals</option>
+                                <option value="Snacks">Snacks</option>
+                                <option value="Beverages">Beverages</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Serving Size</label>
+                            <input type="number" id="cust-serving-size" class="form-control" value="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Unit (g, ml, serving, slice)</label>
+                            <input type="text" id="cust-serving-unit" class="form-control" value="g" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Calories (kcal)</label>
+                            <input type="number" id="cust-calories" class="form-control" step="0.1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Protein (g)</label>
+                            <input type="number" id="cust-protein" class="form-control" step="0.1" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Carbs (g)</label>
+                            <input type="number" id="cust-carbs" class="form-control" step="0.1" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Fat (g)</label>
+                            <input type="number" id="cust-fat" class="form-control" step="0.1" value="0">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Dietary Fiber (g)</label>
+                            <input type="number" id="cust-fiber" class="form-control" step="0.1" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Sodium (mg)</label>
+                            <input type="number" id="cust-sodium" class="form-control" step="0.1" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Calcium (mg)</label>
+                            <input type="number" id="cust-calcium" class="form-control" step="0.1" value="0">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" style="margin-top: 15px;">Save Food Item to SQLite Database</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Banner -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- JavaScript Application Modules -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/tracker.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+# ─── Render Deployment Blueprint ─────────────────────────────────────────────
+# Render reads this file automatically when you connect your GitHub repo.
+# Docs: https://render.com/docs/blueprint-spec
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+  - type: web
+    name: nutritrack-ai
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /
+
+    # Environment variables — set GEMINI_API_KEY in Render dashboard
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: GEMINI_API_KEY
+        sync: false   # Set this manually in Render dashboard (keep secret)
+
+    # Optional: Persistent disk for SQLite database
+    # Uncomment if you want data to survive redeploys (requires paid plan)
+    # disk:
+    #   name: nutritrack-data
+    #   mountPath: /app/backend/data
+    #   sizeGB: 1
