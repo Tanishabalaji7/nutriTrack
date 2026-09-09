@@ -3,7 +3,7 @@
 # SQLite data is stored in /app/backend/data (use Render Disk for persistence).
 # ─────────────────────────────────────────────────────────────────────────────
 
-FROM openjdk:21-jdk-slim AS builder
+FROM eclipse-temurin:21-jdk-jammy AS builder
 
 WORKDIR /app
 
@@ -17,7 +17,7 @@ RUN mkdir -p backend/bin && \
     $(find backend/src -name "*.java")
 
 # ─── Runtime Stage ────────────────────────────────────────────────────────────
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:21-jre-jammy
 
 WORKDIR /app
 
