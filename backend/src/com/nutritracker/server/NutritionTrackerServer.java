@@ -93,6 +93,9 @@ public class NutritionTrackerServer {
 
             exchange.getResponseHeaders().set("Content-Type", contentType);
             exchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
+            exchange.getResponseHeaders().set("Cache-Control", "no-cache, no-store, must-revalidate");
+            exchange.getResponseHeaders().set("Pragma", "no-cache");
+            exchange.getResponseHeaders().set("Expires", "0");
             exchange.sendResponseHeaders(200, fileBytes.length);
 
             try (OutputStream os = exchange.getResponseBody()) {

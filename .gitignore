@@ -1,32 +1,54 @@
-# Environment secrets
-.env
-*.env.local
+# ==============================================================================
+# NutriTrack AI — Git Ignore Rules
+# ==============================================================================
 
-# Compiled Java Bytecode
+# Environment & Secrets (Never commit credentials)
+.env
+.env.*
+!.env.example
+
+# Compiled Java Bytecode & Build Artifacts
 backend/bin/
+target/
 *.class
 
-# Keep lib JARs (dependencies needed for build)
+# Keep bundled library JARs required for building & running
 !backend/lib/*.jar
 
-# Runtime Logs
+# Keep directory structure .gitkeep files
+!.gitkeep
+!**/.gitkeep
+
+# Runtime Application Logs
 *.log
 backend/server.log
 
-# SQLite database (runtime data — don't commit)
+# SQLite Database Files (Runtime Data)
 backend/data/*.db
+backend/data/*.db-journal
 backend/data/*.db-shm
 backend/data/*.db-wal
 
 # Operating System Files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
-# IDE & Editor files
+# IDE & Editor Settings
 .idea/
 .vscode/
 *.iml
+*.ipr
+*.iws
+*.sublime-project
+*.sublime-workspace
 
-# Unused folders
+# Temporary / Scratch Files
+*.tmp
+*.bak
 untitled folder/
 untitled folder 2/

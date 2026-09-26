@@ -85,14 +85,14 @@ const ChartsModule = {
                         <stop offset="100%" stop-color="#F39F9F" />
                     </linearGradient>
                     <linearGradient id="bar-gradient-cyan" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#F39F9F" />
-                        <stop offset="100%" stop-color="#FFECC0" />
+                        <stop offset="0%" stop-color="#4FB7B3" />
+                        <stop offset="100%" stop-color="#D8FFC5" />
                     </linearGradient>
                 </defs>
                 <!-- Grid Lines -->
                 <line x1="${padding.left}" y1="${padding.top}" x2="${width - padding.right}" y2="${padding.top}" stroke="rgba(185,94,130,0.12)" />
                 <line x1="${padding.left}" y1="${padding.top + chartH/2}" x2="${width - padding.right}" y2="${padding.top + chartH/2}" stroke="rgba(185,94,130,0.12)" />
-                <line x1="${padding.left}" y1="${padding.top + chartH}" x2="${width - padding.right}" y2="${padding.top + chartH}" stroke="#FBFFB1" stroke-width="2" />
+                <line x1="${padding.left}" y1="${padding.top + chartH}" x2="${width - padding.right}" y2="${padding.top + chartH}" stroke="#E9FF97" stroke-width="2" />
 
                 <!-- Legend -->
                 <text x="${width - padding.right}" y="18" fill="#B95E82" font-size="11" font-weight="800" text-anchor="end">--- Target (TDEE)</text>
@@ -144,18 +144,18 @@ const ChartsModule = {
 
                 <!-- Legends -->
                 <g transform="translate(${padding.left}, 16)">
-                    <circle cx="0" cy="0" r="5" fill="#B95E82" stroke="#FBFFB1" stroke-width="1.5" />
-                    <text x="10" y="4" fill="#B95E82" font-size="11" font-weight="800">Protein (g)</text>
+                    <circle cx="0" cy="0" r="5" fill="#4FB7B3" stroke="#E9FF97" stroke-width="1.5" />
+                    <text x="10" y="4" fill="#154740" font-size="11" font-weight="800">Protein (g)</text>
 
-                    <circle cx="100" cy="0" r="5" fill="#EA580C" stroke="#FBFFB1" stroke-width="1.5" />
+                    <circle cx="100" cy="0" r="5" fill="#EA580C" stroke="#E9FF97" stroke-width="1.5" />
                     <text x="110" y="4" fill="#EA580C" font-size="11" font-weight="800">Carbs (g)</text>
 
-                    <circle cx="190" cy="0" r="5" fill="#D97706" stroke="#FBFFB1" stroke-width="1.5" />
+                    <circle cx="190" cy="0" r="5" fill="#D97706" stroke="#E9FF97" stroke-width="1.5" />
                     <text x="200" y="4" fill="#D97706" font-size="11" font-weight="800">Fat (g)</text>
                 </g>
 
                 <!-- Polyline Series -->
-                <polyline fill="none" stroke="#B95E82" stroke-width="3.5" points="${proteinPts}" stroke-linecap="round" stroke-linejoin="round" />
+                <polyline fill="none" stroke="#4FB7B3" stroke-width="3.5" points="${proteinPts}" stroke-linecap="round" stroke-linejoin="round" />
                 <polyline fill="none" stroke="#EA580C" stroke-width="3.5" points="${carbsPts}" stroke-linecap="round" stroke-linejoin="round" />
                 <polyline fill="none" stroke="#D97706" stroke-width="3.5" points="${fatPts}" stroke-linecap="round" stroke-linejoin="round" />
 
@@ -166,9 +166,9 @@ const ChartsModule = {
                     const cY = padding.top + chartH - ((d.carbs / maxMacro) * chartH);
                     const fY = padding.top + chartH - ((d.fat / maxMacro) * chartH);
                     return `
-                        <circle cx="${x}" cy="${pY}" r="5" fill="#B95E82" stroke="#FBFFB1" stroke-width="1.5"><title>${d.dayName} Protein: ${d.protein}g</title></circle>
-                        <circle cx="${x}" cy="${cY}" r="5" fill="#EA580C" stroke="#FBFFB1" stroke-width="1.5"><title>${d.dayName} Carbs: ${d.carbs}g</title></circle>
-                        <circle cx="${x}" cy="${fY}" r="5" fill="#D97706" stroke="#FBFFB1" stroke-width="1.5"><title>${d.dayName} Fat: ${d.fat}g</title></circle>
+                        <circle cx="${x}" cy="${pY}" r="5" fill="#4FB7B3" stroke="#E9FF97" stroke-width="1.5"><title>${d.dayName} Protein: ${d.protein}g</title></circle>
+                        <circle cx="${x}" cy="${cY}" r="5" fill="#EA580C" stroke="#E9FF97" stroke-width="1.5"><title>${d.dayName} Carbs: ${d.carbs}g</title></circle>
+                        <circle cx="${x}" cy="${fY}" r="5" fill="#D97706" stroke="#E9FF97" stroke-width="1.5"><title>${d.dayName} Fat: ${d.fat}g</title></circle>
                     `;
                 }).join('')}
 

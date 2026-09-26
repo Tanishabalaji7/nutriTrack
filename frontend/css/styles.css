@@ -1,48 +1,57 @@
 /* ==========================================================================
-   NutriTrack AI — Custom Palette & Aesthetic Theme
+   NutriTrack AI — Custom Palette with Neon Bordering
    Palette Specs:
-   - Tab Fonts: #B95E82 (Berry Rose / Magenta Mauve)
-   - Side Nav Bar: #F39F9F (Warm Soft Coral / Rose Quartz)
-   - Overall Color: #FFECC0 (Warm Champagne Cream)
-   - Neon Based Linings: #FBFFB1 (Luminous Pastel Lemon / Neon Yellow-Lime)
+   - Side Nav Bar: #FCF9EA (Soft Warm Cream Ivory)
+   - Unselected Tab Border: #E9A319 (Warm Golden Amber)
+   - Selection of Tab Color: #91AC67 (Soft Olive Herb Green)
+   - Logo & Profile Icon Color: #91AC67 (Soft Olive Herb Green)
+   - Overall Background: #E8F3E6 (Soft Pastel Matcha Green)
+   - Card Surfaces: #F9FBF5 (Ivory / Soft White)
+   - Neon Based Bordering: #E9FF97 (Luminous Neon Lime)
    ========================================================================== */
 
 :root {
     /* Palette Tokens */
-    --color-overall-bg: #FFECC0;
-    --color-sidebar-bg: #F39F9F;
-    --color-tab-font: #B95E82;
-    --color-neon-lining: #FBFFB1;
-    --color-calendar-accent: #FFBFA9;
-    --color-calendar-soft: rgba(255, 191, 169, 0.25);
-    --color-calendar-border: rgba(255, 191, 169, 0.7);
-    --color-calendar-glow: rgba(255, 191, 169, 0.5);
+    --color-overall-bg: #E8F3E6;
+    --color-sidebar-bg: #FCF9EA;
+    --color-sidebar-pill: #FFFFFF;
+    --color-tab-selected: #91AC67;
+    --color-tab-unselected-border: #E9A319;
+    --color-logo: #91AC67;
+    --color-tab-font: #382414;
+    --color-neon-lining: #E9FF97;
+    --color-calendar-accent: #91AC67;
+    --color-calendar-soft: rgba(145, 172, 103, 0.2);
+    --color-calendar-border: #E9FF97;
+    --color-calendar-glow: rgba(233, 255, 151, 0.85);
 
     /* Theme Derived Tokens */
-    --bg-base: #FFECC0;
-    --bg-surface: rgba(255, 248, 235, 0.88);
-    --bg-surface-hover: rgba(255, 243, 224, 0.95);
-    --bg-surface-solid: #FFFDF9;
-    --bg-elevated: rgba(255, 255, 255, 0.9);
+    --bg-base: #E8F3E6;
+    --bg-surface: #F9FBF5;
+    --bg-surface-hover: #FFFFFF;
+    --bg-surface-solid: #FFFFFF;
+    --bg-elevated: #FFFFFF;
     
-    --border-color: rgba(185, 94, 130, 0.18);
-    --border-neon: #FBFFB1;
-    --border-neon-glow: rgba(251, 255, 177, 0.85);
-    --border-highlight: rgba(185, 94, 130, 0.35);
+    --border-color: rgba(233, 255, 151, 0.8);
+    --border-neon: #E9FF97;
+    --border-neon-glow: rgba(233, 255, 151, 0.95);
+    --border-highlight: #4FB7B3;
 
-    --text-primary: #521830;
-    --text-secondary: #843054;
-    --text-muted: #9E5676;
-    --text-tab: #B95E82;
+    --text-primary: #382822;
+    --text-secondary: #574036;
+    --text-muted: #7A6258;
+    --text-tab: #4A352D;
 
-    --accent-rose: #B95E82;
-    --accent-rose-glow: rgba(185, 94, 130, 0.4);
-    --accent-coral: #F39F9F;
-    --accent-neon: #FBFFB1;
-    --accent-neon-glow: rgba(251, 255, 177, 0.7);
+    --accent-selected: #4FB7B3;
+    --accent-selected-glow: rgba(79, 183, 179, 0.65);
+    --accent-rose: #E15A7A;
+    --accent-rose-glow: rgba(225, 90, 122, 0.4);
+    --accent-coral: #DCCDBE;
+    --accent-neon: #E9FF97;
+    --accent-neon-glow: rgba(233, 255, 151, 0.95);
     --accent-emerald: #10B981;
-    --accent-cyan: #0284C7;
-    --accent-amber: #D97706;
+    --accent-cyan: #4FB7B3;
+    --accent-amber: #F59E0B;
 
     --radius-sm: 10px;
     --radius-md: 16px;
@@ -50,11 +59,11 @@
     --radius-xl: 30px;
     --radius-full: 9999px;
 
-    --shadow-sm: 0 4px 14px rgba(185, 94, 130, 0.08);
-    --shadow-md: 0 10px 30px rgba(185, 94, 130, 0.14);
-    --shadow-lg: 0 20px 50px rgba(185, 94, 130, 0.22);
-    --shadow-neon: 0 0 18px rgba(251, 255, 177, 0.8), 0 0 8px #FBFFB1;
-    --shadow-neon-card: 0 0 0 2px #FBFFB1, 0 8px 32px rgba(185, 94, 130, 0.16);
+    --shadow-sm: 0 4px 14px rgba(74, 53, 45, 0.06);
+    --shadow-md: 0 10px 30px rgba(74, 53, 45, 0.10);
+    --shadow-lg: 0 20px 50px rgba(74, 53, 45, 0.14);
+    --shadow-neon: 0 0 20px rgba(233, 255, 151, 0.95), 0 0 8px #E9FF97;
+    --shadow-neon-card: 0 0 0 2px #E9FF97, 0 8px 30px rgba(233, 255, 151, 0.45);
 
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -95,14 +104,14 @@ body {
     left: -5%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, #FBFFB1 0%, rgba(243, 159, 159, 0.3) 60%, rgba(255, 236, 192, 0) 80%);
+    background: radial-gradient(circle, #E9FF97 0%, rgba(232, 243, 230, 0.45) 60%, rgba(232, 243, 230, 0) 80%);
 }
 .glow-2 {
     bottom: 5%;
     right: -5%;
     width: 650px;
     height: 650px;
-    background: radial-gradient(circle, #F39F9F 0%, rgba(185, 94, 130, 0.25) 60%, rgba(255, 236, 192, 0) 80%);
+    background: radial-gradient(circle, #4FB7B3 0%, rgba(79, 183, 179, 0.2) 60%, rgba(232, 243, 230, 0) 80%);
     animation-delay: -7s;
 }
 .glow-3 {
@@ -110,7 +119,7 @@ body {
     left: 35%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, #FBFFB1 0%, rgba(255, 236, 192, 0) 70%);
+    background: radial-gradient(circle, #E9FF97 0%, rgba(232, 243, 230, 0) 70%);
     animation-delay: -12s;
 }
 
@@ -351,13 +360,14 @@ body {
 }
 
 /* ==========================================================================
-   Sidebar Navigation (#F39F9F Side Nav Bar with #B95E82 Tab Fonts & #FBFFB1 Neon Linings)
+   Sidebar Navigation (#FCF9EA Side Nav Bar with #FFF0BE Tab Selection & Neon Linings)
    ========================================================================== */
 .sidebar {
     width: 275px;
-    background: var(--color-sidebar-bg);
+    background-color: #FCF9EA !important;
+    background: #FCF9EA !important;
     border-right: 3px solid var(--color-neon-lining);
-    box-shadow: 4px 0 25px rgba(251, 255, 177, 0.45), 6px 0 30px rgba(185, 94, 130, 0.15);
+    box-shadow: 4px 0 25px rgba(233, 255, 151, 0.45), 6px 0 30px rgba(74, 53, 45, 0.08);
     padding: 28px 20px;
     display: flex;
     flex-direction: column;
@@ -378,17 +388,18 @@ body {
     width: 44px;
     height: 44px;
     border-radius: var(--radius-md);
-    background: linear-gradient(135deg, var(--color-tab-font), #8C375C);
+    background: #91AC67 !important;
     border: 2px solid var(--color-neon-lining);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-neon-lining);
-    box-shadow: 0 0 15px rgba(251, 255, 177, 0.6);
+    color: #FFFFFF !important;
+    box-shadow: 0 0 16px rgba(145, 172, 103, 0.6);
 }
 .brand-logo svg {
     width: 24px;
     height: 24px;
+    color: #FFFFFF !important;
 }
 .brand-text h2 {
     font-family: var(--font-heading);
@@ -398,13 +409,13 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
-    color: var(--color-tab-font);
+    color: #382414;
 }
 .badge-ai {
     font-size: 0.65rem;
     background: var(--color-neon-lining);
-    color: var(--color-tab-font);
-    border: 1.5px solid var(--color-tab-font);
+    color: #382414;
+    border: 1.5px solid #382414;
     padding: 2px 7px;
     border-radius: var(--radius-full);
     font-weight: 900;
@@ -413,7 +424,7 @@ body {
 }
 .brand-subtitle {
     font-size: 0.72rem;
-    color: #6C1E3E;
+    color: #6B4E38;
     font-weight: 700;
 }
 
@@ -425,16 +436,16 @@ body {
     flex: 1;
 }
 
-/* Nav items with #B95E82 Tab Fonts & #FBFFB1 Neon Linings */
+/* Nav items with #E9A319 Border (Unselected), #91AC67 Active Selection & Neon Linings */
 .nav-item {
     display: flex;
     align-items: center;
     gap: 14px;
     padding: 13px 18px;
     border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.35);
-    border: 2px solid transparent;
-    color: var(--color-tab-font);
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid #E9A319 !important;
+    color: #382414;
     font-family: var(--font-heading);
     font-size: 0.95rem;
     font-weight: 800;
@@ -442,37 +453,43 @@ body {
     transition: var(--transition-fast);
     text-align: left;
     position: relative;
-    box-shadow: 0 2px 8px rgba(185, 94, 130, 0.06);
+    box-shadow: 0 2px 8px rgba(74, 53, 45, 0.06);
 }
 .nav-item svg {
     width: 20px;
     height: 20px;
     stroke-width: 2.4;
-    color: var(--color-tab-font);
+    color: #4A3528;
     transition: var(--transition-fast);
 }
 .nav-item:hover {
-    color: #581630;
-    background: rgba(255, 255, 255, 0.65);
-    border-color: var(--color-neon-lining);
-    box-shadow: 0 0 14px rgba(251, 255, 177, 0.7);
+    color: #2D1D12;
+    background: #FFFFFF;
+    border-color: #E9A319 !important;
+    box-shadow: 0 0 16px rgba(233, 163, 25, 0.5), 0 0 10px rgba(233, 255, 151, 0.6);
     transform: translateX(3px);
 }
 .nav-item.active {
-    color: #FFFDF9;
-    background: var(--color-tab-font);
-    border-color: var(--color-neon-lining);
-    box-shadow: 0 0 16px rgba(251, 255, 177, 0.8), 0 6px 18px rgba(185, 94, 130, 0.3);
+    color: #FFFFFF !important;
+    background: #91AC67 !important;
+    border: 2px solid var(--color-neon-lining) !important;
+    box-shadow: 0 0 20px rgba(145, 172, 103, 0.75), 0 4px 14px rgba(145, 172, 103, 0.4) !important;
+    font-weight: 800;
+    transform: translateX(4px);
 }
 .nav-item.active svg {
-    color: var(--color-neon-lining);
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+}
+.nav-item.active span {
+    color: #FFFFFF !important;
 }
 .tab-pill {
     margin-left: auto;
     font-size: 0.68rem;
     background: var(--color-neon-lining);
-    color: var(--color-tab-font);
-    border: 1px solid var(--color-tab-font);
+    color: #382414;
+    border: 1px solid #382414;
     padding: 2px 8px;
     border-radius: var(--radius-full);
     font-weight: 800;
@@ -489,32 +506,45 @@ body {
     gap: 12px;
     padding: 10px 12px;
     border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.75);
     border: 2px solid var(--color-neon-lining);
-    box-shadow: 0 0 10px rgba(251, 255, 177, 0.4);
+    box-shadow: 0 0 10px rgba(233, 255, 151, 0.4);
 }
 .user-avatar {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: var(--color-tab-font);
+    background: #91AC67 !important;
     border: 2px solid var(--color-neon-lining);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
     font-size: 0.85rem;
-    color: var(--color-neon-lining);
+    color: #FFFFFF !important;
+    box-shadow: 0 0 12px rgba(145, 172, 103, 0.5);
 }
 .user-info h4 {
     font-size: 0.88rem;
     font-weight: 800;
-    color: var(--color-tab-font);
+    color: #382414;
 }
 .user-info span {
     font-size: 0.72rem;
-    color: #6C1E3E;
+    color: #6B4E38;
     font-weight: 700;
+}
+.sidebar .btn-outline {
+    background: rgba(255, 255, 255, 0.75);
+    color: #382414;
+    border: 2px solid var(--color-neon-lining);
+    font-weight: 800;
+}
+.sidebar .btn-outline:hover {
+    background: #FFFFFF;
+    color: #2D1D12;
+    border-color: var(--color-neon-lining);
+    box-shadow: 0 0 14px rgba(233, 255, 151, 0.85);
 }
 
 /* ==========================================================================
