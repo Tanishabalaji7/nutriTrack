@@ -6,9 +6,9 @@
 // For production:  replace with your Render/Railway backend URL
 //                  e.g. 'https://nutritrack-ai.onrender.com/api'
 const BACKEND_URL = window.__NUTRITRACK_BACKEND__ 
-    || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-        ? 'http://localhost:8080/api'
-        : 'https://YOUR-RENDER-APP.onrender.com/api');  // ← paste your Render URL here
+    || (window.location.origin && window.location.origin !== 'null'
+        ? `${window.location.origin}/api`
+        : '/api');
 
 const API_BASE_URL = BACKEND_URL;
 
